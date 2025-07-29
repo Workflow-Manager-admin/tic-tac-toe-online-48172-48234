@@ -1,13 +1,18 @@
 /* CSS Variables for Theme Management */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  /* Light theme colors (updated to match requirements) */
+  --primary: #1976d2;
+  --accent: #388e3c;
+  --secondary: #ffffff;
+  --board-bg: #ffffff;
+  --cell-bg: #f4f7fa;
+  --cell-hover: #e3f2fd;
+  --cell-border: #aaa;
+  --winner: #388e3c;
+  --danger: #d32f2f;
+  --draw: #bdbdbd;
+  --text-primary: #223046;
+  --text-secondary: #388e3c;
 }
 
 [data-theme="dark"] {
@@ -102,3 +107,80 @@
     font-size: 12px;
   }
 }
+
+/* ---- Tic Tac Toe Styles ---- */
+.ttt-modesel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.ttt-btn {
+  border: none;
+  outline: none;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 11px 23px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: box-shadow 0.15s, background 0.2s;
+  background: var(--primary);
+  color: var(--secondary);
+  box-shadow: 0 2px 7px rgba(25, 118, 210, 0.04);
+  margin: 0 0 6px 0;
+}
+.ttt-btn:disabled {
+  background: #bdbdbd;
+  color: #f5f5f5;
+  cursor: not-allowed;
+}
+.ttt-board {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0;
+  margin: 0 auto 10px auto;
+  background: var(--board-bg);
+  border-radius: 15px;
+  box-shadow: 0 5px 32px 0 rgba(25,118,210,0.08);
+  width: 340px;
+  max-width: 98vw;
+  padding: 14px;
+}
+.ttt-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.ttt-cell {
+  width: 90px;
+  height: 90px;
+  max-width: 30vw;
+  max-height: 30vw;
+  background: var(--cell-bg);
+  border: 1px solid var(--cell-border);
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  cursor: pointer;
+  transition: background 0.16s;
+  text-align: center;
+  border-radius: 7px;
+}
+.ttt-cell:hover:enabled {
+  background: var(--cell-hover);
+}
+.ttt-status {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.ttt-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+@media (max-width: 600px) {
+  .ttt-board { width: 99vw; padding: 3px; }
+  .ttt-cell { width: 24vw; height: 24vw; font-size: 1.6rem;}
+}
+/* End Tic Tac Toe Styles */
